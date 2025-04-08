@@ -13,7 +13,7 @@ import {
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CloudQueueRoundedIcon from '@mui/icons-material/CloudQueueRounded';
 
-const URL_1 = 'https://your-api-endpoint.com/upload'; // replace this
+const URL_1 = 'http://92.43.29.102:23895/tasks/test/enhance-image/'; // replace this
 
 export default function ImageUploadDialog({ onClose }) {
     const [file, setFile] = useState(null);
@@ -111,6 +111,60 @@ export default function ImageUploadDialog({ onClose }) {
                         </Typography>
                     </Typography>
                 </Box>
+
+                {file && (
+                    <Box
+                        mt={2}
+                        px={2}
+                        py={1}
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        sx={{
+                            bgcolor: '#f5f5f5',
+                            borderRadius: 2,
+                            border: '1px solid #eee',
+                        }}
+                    >
+                        <Box display="flex" alignItems="center" gap={1}>
+                            <Box
+                                component="span"
+                                sx={{
+                                    width: 24,
+                                    height: 24,
+                                    display: 'inline-block',
+                                    backgroundColor: '#4285f4',
+                                    borderRadius: 1,
+                                    textAlign: 'center',
+                                    color: '#fff',
+                                    fontSize: 14,
+                                    fontWeight: 'bold',
+                                    lineHeight: '24px',
+                                }}
+                            >
+                                📄
+                            </Box>
+                            <Box>
+                                <Typography fontSize="14px">{file.name}</Typography>
+                                <Typography variant="caption" color="text.secondary">
+                                    {(file.size / 1024).toFixed(1)}KB
+                                </Typography>
+                            </Box>
+                        </Box>
+                        <IconButton onClick={() => setFile(null)} sx={{ color: 'red' }}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                width="20"
+                                fill="currentColor"
+                            >
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-4.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z" />
+                            </svg>
+                        </IconButton>
+                    </Box>
+                )}
 
                 <Box mt={3} display="flex" justifyContent="space-between" alignItems="center">
                     <Typography variant="caption" color="text.secondary">
